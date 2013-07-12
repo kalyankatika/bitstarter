@@ -1,11 +1,9 @@
 var express = require('express');
 
-var app = express.createServer(express.logger());
-
-var buffer = new Buffer("I'm a string!", "utf-8")
+var app = express.createServer(express.logger();
 
 app.get('/', function(request, response) {
-  response.send(buffer);
+  response.send("test");
 });
 
 
