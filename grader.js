@@ -70,7 +70,7 @@ var checkHtmlFile = function(htmlfile, checksfile, htmlurl) {
            if(require.main==module) printtoconsole(out);
            return(out);
          }
-     
+      });
 };
 
 var cheerioCheck = function(checksfile, htmldata) {
@@ -123,7 +123,7 @@ if(require.main == module) {
     program
         .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
         .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
-        .option('-u, --url <url>', 'Path to external URL', clone(assertURLValid, URL_DEFAULT)
+        .option('-u, --url <url>', 'Path to external URL', clone(assertURLValid), URL_DEFAULT)
         .parse(process.argv);
         checkHtmlFile(program.file, program.checks, program.url);
     //var checkJson = checkHtmlFile(program.file, program.checks);
