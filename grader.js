@@ -67,7 +67,7 @@ var checkHtmlFile = function(htmlfile, checksfile, htmlurl) {
            process.exit(1);}
          else {
            var out = cheerioCheck(checksfile, result);
-           if(require.main==module) printtoconsole(out);
+           if(require.main==module) outConsole(out);
            return(out);
          }
       });
@@ -84,33 +84,9 @@ var cheerioCheck = function(checksfile, htmldata) {
     return (out);
 };
 
-var printtoconsole = function(out) {
+var outConsole = function(out) {
     var outJson = JSON.stringify(out, null, 4);
     console.log(outJson);
-};
-
-var checkHtml = function(htmlfile, checksfile, htmlurl) {
-  if(htmlurl=="") fs.readFile(htmlfile, "utf8", function(error, data) {
-    if (!(error)) {
-      var out = cheerioProcess(checksfile, data);
-      if (require.main==module) printtoconsole (out);
-      return(out);
-    }
-    else {
-      console.log ('HTML input file reading error');
-      process.exit(1);
-    }
-  })
-  else rest.get(htmlurl).on('complete', function(result) {
-         if (result instanceof Error) {
-           console.log('URL reading error: ' + result.message);
-           process.exit(1);}
-         else {
-           var out = cheerioProcess(checksfile, result);
-           if(require.main==module) printtoconsole(out);
-           return(out);
-         }
-       });
 };
 
 var clone = function(fn) {
